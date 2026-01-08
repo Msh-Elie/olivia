@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Olivia Slovakia</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+            min-height: 100vh;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        /* Animated Background */
+        .aurora-bg {
+            position: fixed;
+            inset: 0;
+            width: 100%;
+            height: 100vh;
+            background-color: #ffffff;
+            pointer-events: none;
+            user-select: none;
+            z-index: 0;
+        }
+
+        .aurora-blob {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(60px);
+            opacity: 0.55;
+        }
+
+        .blob1 {
+            width: 65vmax;
+            height: 65vmax;
+            top: -10%;
+            left: -10%;
+            background: rgb(14, 165, 233);
+            animation: aurora-move-1 6s ease-in-out infinite alternate;
+        }
+
+        .blob2 {
+            width: 70vmax;
+            height: 70vmax;
+            bottom: -15%;
+            right: -15%;
+            background: rgb(6, 182, 212);
+            filter: blur(80px);
+            opacity: 0.5;
+            animation: aurora-move-2 6s ease-in-out infinite alternate;
+        }
+
+        .blob3 {
+            width: 60vmax;
+            height: 60vmax;
+            top: 20%;
+            right: -10%;
+            background: rgb(166, 242, 255);
+            filter: blur(70px);
+            opacity: 0.45;
+            animation: aurora-move-3 7s ease-in-out infinite alternate;
+        }
+
+        @keyframes aurora-move-1 {
+            0% { transform: translate(-20%, -10%) scale(1); }
+            50% { transform: translate(20%, 10%) scale(1.2); }
+            100% { transform: translate(-10%, 0%) scale(1); }
+        }
+
+        @keyframes aurora-move-2 {
+            0% { transform: translate(30%, -20%) scale(1); }
+            50% { transform: translate(-10%, 15%) scale(1.15); }
+            100% { transform: translate(15%, -10%) scale(1); }
+        }
+
+        @keyframes aurora-move-3 {
+            0% { transform: translate(-15%, 25%) scale(1); }
+            50% { transform: translate(10%, -15%) scale(1.25); }
+            100% { transform: translate(-5%, 10%) scale(1); }
+        }
+
+        /* Main Container */
+        .container {
+            position: relative;
+            z-index: 10;
+            max-width: 45%;
+            width: 95vw;
+            margin: 1.5rem auto;
+            background: rgba(0, 0, 0, 0.95);
+            border-radius: 1rem;
+            border: 1px solid rgba(0, 0, 0, 0.16);
+            backdrop-filter: blur(8px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            padding: 1.5rem;
+        }
+
+        /* Cover Image */
+        .cover {
+            position: relative;
+            width: 100%;
+            height: 300px;
+            margin-bottom: 1rem;
+            border-radius: 0.5rem;
+            overflow: hidden;
+        }
+
+        .cover img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center center;
+        }
+
+        .cover-gradient {
+            display: none;
+        }
+
+        .cover-content {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 1rem;
+            z-index: 30;
+            text-align: center;
+        }
+
+        .title {
+            font-size: 2.5rem;
+            font-weight: 600;
+            color: white;
+            margin-bottom: 0.5rem;
+        }
+
+        .status-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: white;
+            padding: 0.25rem 0.5rem;
+            border-radius: 9999px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .status-dot {
+            position: relative;
+            width: 0.75rem;
+            height: 0.75rem;
+            border-radius: 50%;
+            background: rgb(34, 197, 94);
+        }
+
+        .status-dot::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: 50%;
+            background: rgb(34, 197, 94);
+            opacity: 0.75;
+            animation: ping 2s cubic-bezier(0, 0, 0.8, 1) infinite;
+        }
+
+        @keyframes ping {
+            0%, 100% { transform: scale(1); opacity: 0.75; }
+            50% { transform: scale(1.5); opacity: 0; }
+        }
+
+        .status-text {
+            color: rgb(31, 41, 55);
+            font-size: 0.875rem;
+            font-weight: 600;
+        }
+
+        /* Countdown */
+        .countdown-section {
+            text-align: center;
+            margin: 1.5rem 0;
+        }
+
+        .countdown-title {
+            font-size: 1.875rem;
+            font-weight: 700;
+            color: white;
+            margin-bottom: 1rem;
+        }
+
+        .countdown {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .countdown-item {
+            position: relative;
+            background: linear-gradient(135deg, white, #f9fafb);
+            padding: 1rem;
+            border-radius: 0.5rem;
+            min-width: 70px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: transform 0.3s;
+        }
+
+        .countdown-item:hover {
+            transform: scale(1.05);
+        }
+
+        .countdown-number {
+            font-size: 1.313rem;
+            font-weight: 800;
+            color: black;
+            line-height: 1;
+        }
+
+        .countdown-label {
+            font-size: 0.875rem;
+            font-weight: 700;
+            color: rgb(100, 116, 139);
+            margin-top: 0.25rem;
+            letter-spacing: 0.05em;
+        }
+
+        .countdown-separator {
+            color: rgb(148, 163, 184);
+            font-size: 1.5rem;
+            font-weight: 300;
+            margin: 0 0.25rem;
+        }
+
+        /* Links Grid */
+        .links-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 0.75rem;
+            margin-top: 1rem;
+        }
+
+        .link-card {
+            position: relative;
+            height: 280px;
+            border-radius: 0.75rem;
+            overflow: hidden;
+            cursor: pointer;
+            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+            transition: all 0.2s;
+            grid-column: span 2;
+            text-decoration: none;
+        }
+
+        .link-card:hover {
+            transform: scale(1.02);
+            box-shadow: 0 20px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        @keyframes zoom {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.04); }
+        }
+
+        .link-card {
+            animation: zoom 2.2s ease-in-out infinite;
+        }
+
+        .link-card img {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center 34%;
+        }
+
+        .link-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.8), rgba(0,0,0,0.5), transparent);
+            opacity: 0.8;
+            z-index: 1;
+        }
+
+        .link-content {
+            position: relative;
+            z-index: 2;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 1rem;
+            text-align: center;
+        }
+
+        .link-icon {
+            position: absolute;
+            top: 0.5rem;
+            right: 0.5rem;
+            z-index: 3;
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            background: white;
+            padding: 0.125rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+
+        .link-card:hover .link-icon {
+            transform: scale(1.1) rotate(3deg);
+        }
+
+        .link-icon img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: contain;
+            position: relative;
+        }
+
+        .link-title {
+            font-size: 1.438rem;
+            font-weight: 700;
+            color: white;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .link-subtitle {
+            font-size: 0.875rem;
+            color: rgba(255, 255, 255, 0.8);
+            margin-top: 0.25rem;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                max-width: 95vw;
+                width: 95vw;
+            }
+
+            .title {
+                font-size: 2rem;
+            }
+
+            .countdown-title {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Aurora Background -->
+    <div class="aurora-bg">
+        <div class="aurora-blob blob1"></div>
+        <div class="aurora-blob blob2"></div>
+        <div class="aurora-blob blob3"></div>
+    </div>
+
+    <!-- Main Container -->
+    <div class="container">
+        <!-- Cover Section -->
+        <div class="cover">
+            <img src="asset\olivia.jpeg" alt="Cover">
+            <div class="cover-gradient"></div>
+            <div class="cover-content">
+                <h1 class="title">Olivia Slovakia</h1>
+                <div class="status-badge">
+                    <div class="status-dot"></div>
+                    <span class="status-text">En ligne</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Countdown Section -->
+        <div class="countdown-section">
+            <h3 class="countdown-title">Fermeture de l'accès privé dans... 👇</h3>
+            <div class="countdown">
+                <div class="countdown-item">
+                    <div class="countdown-number" id="hours">07</div>
+                    <div class="countdown-label">Heures</div>
+                </div>
+                <div class="countdown-separator">:</div>
+                <div class="countdown-item">
+                    <div class="countdown-number" id="minutes">33</div>
+                    <div class="countdown-label">Minutes</div>
+                </div>
+                <div class="countdown-separator">:</div>
+                <div class="countdown-item">
+                    <div class="countdown-number" id="seconds">23</div>
+                    <div class="countdown-label">Secondes</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Links Grid -->
+        <div class="links-grid">
+
+            <!-- OnlyFans Card -->
+            <a href="https://onlyfans.com/oliviaslovakia" target="_blank" class="link-card">
+                <img src="asset\olivia_of.jpeg" alt="Mon OnlyFans">
+                <div class="link-overlay"></div>
+                <div class="link-content">
+                    <h3 class="link-title">Mon OnlyFans 💙</h3>
+                    <p class="link-subtitle">Découvre-moi et discutons ensemble ! 😘</p>
+                </div>
+                <div class="link-icon">
+                    <img src="https://ucarecdn.com/6b0bc347-a082-451a-9c45-9a6adab8d8d2/onlyfans-1.webp" alt="OnlyFans Icon">
+                </div>
+            </a>
+        </div>
+    </div>
+
+    <script>
+        // Countdown Timer
+        const targetTime = new Date().getTime() + (7 * 60 * 60 * 1000) + (33 * 60 * 1000) + (23 * 1000);
+
+        function updateCountdown() {
+            const now = new Date().getTime();
+            const distance = targetTime - now;
+
+            if (distance < 0) {
+                document.getElementById('hours').textContent = '00';
+                document.getElementById('minutes').textContent = '00';
+                document.getElementById('seconds').textContent = '00';
+                return;
+            }
+
+            const hours = Math.floor(distance / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
+            document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
+            document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
+        }
+
+        updateCountdown();
+        setInterval(updateCountdown, 1000);
+    </script>
+</body>
+</html>
