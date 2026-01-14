@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Olivia</title>
+    <title>Olivia Svk</title>
     <style>
         * {
             margin: 0;
@@ -12,449 +12,505 @@
         }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+            font-family: 'Poppins', sans-serif;
+            background-color: #000;
+            color: #fff;
             min-height: 100vh;
-            position: relative;
             overflow-x: hidden;
-            background-color: #000000;
         }
 
-        /* Animated Background */
-        .aurora-bg {
-            display: none;
-        }
-
-        .aurora-blob {
-            position: absolute;
-            border-radius: 50%;
-            filter: blur(60px);
-            opacity: 0.55;
-        }
-
-        .blob1 {
-            width: 65vmax;
-            height: 65vmax;
-            top: -10%;
-            left: -10%;
-            background: rgb(14, 165, 233);
-            animation: aurora-move-1 6s ease-in-out infinite alternate;
-        }
-
-        .blob2 {
-            width: 70vmax;
-            height: 70vmax;
-            bottom: -15%;
-            right: -15%;
-            background: rgb(6, 182, 212);
-            filter: blur(80px);
-            opacity: 0.5;
-            animation: aurora-move-2 6s ease-in-out infinite alternate;
-        }
-
-        .blob3 {
-            width: 60vmax;
-            height: 60vmax;
-            top: 20%;
-            right: -10%;
-            background: rgb(166, 242, 255);
-            filter: blur(70px);
-            opacity: 0.45;
-            animation: aurora-move-3 7s ease-in-out infinite alternate;
-        }
-
-        @keyframes aurora-move-1 {
-            0% { transform: translate(-20%, -10%) scale(1); }
-            50% { transform: translate(20%, 10%) scale(1.2); }
-            100% { transform: translate(-10%, 0%) scale(1); }
-        }
-
-        @keyframes aurora-move-2 {
-            0% { transform: translate(30%, -20%) scale(1); }
-            50% { transform: translate(-10%, 15%) scale(1.15); }
-            100% { transform: translate(15%, -10%) scale(1); }
-        }
-
-        @keyframes aurora-move-3 {
-            0% { transform: translate(-15%, 25%) scale(1); }
-            50% { transform: translate(10%, -15%) scale(1.25); }
-            100% { transform: translate(-5%, 10%) scale(1); }
-        }
-
-        /* Main Container */
         .container {
             position: relative;
             z-index: 10;
-            max-width: 45%;
-            width: 95vw;
-            margin: 1.5rem auto;
-            background: rgba(0, 0, 0, 0.95);
-            border-radius: 1rem;
-            border: 1px solid rgba(0, 0, 0, 0.16);
-            backdrop-filter: blur(8px);
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
-            overflow: visible;
-            padding: 1.5rem;
+            padding: 0 20px 100px 20px;
         }
 
-        /* Cover Image */
-        .cover {
-            position: relative;
-            width: 100%;
-            height: 300px;
-            margin-bottom: 1rem;
-            overflow: hidden;
+        .main-wrapper {
+            margin: 0 auto;
+            max-width: 448px;
         }
 
-        .cover img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            object-position: center center;
-        }
-
-        .cover-gradient {
-            display: none;
-        }
-
-        .cover-content {
-            position: absolute;
-            bottom: 0;
+        /* Background */
+        .background {
+            position: fixed;
+            top: 0;
             left: 0;
             right: 0;
-            padding: 1rem;
-            z-index: 30;
-            text-align: center;
+            bottom: 0;
+            background-image: url('asset/olivia.jpeg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            z-index: 0;
         }
 
-        .title {
-            font-size: 2.5rem;
-            font-weight: 600;
-            color: white;
-            margin-bottom: 0.5rem;
-        }
-
-        .status-badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            background: white;
-            padding: 0.25rem 0.5rem;
-            border-radius: 9999px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
-
-        .status-dot {
-            position: relative;
-            width: 0.75rem;
-            height: 0.75rem;
-            border-radius: 50%;
-            background: rgb(34, 197, 94);
-        }
-
-        .status-dot::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            border-radius: 50%;
-            background: rgb(34, 197, 94);
-            opacity: 0.75;
-            animation: ping 2s cubic-bezier(0, 0, 0.8, 1) infinite;
-        }
-
-        @keyframes ping {
-            0%, 100% { transform: scale(1); opacity: 0.75; }
-            50% { transform: scale(1.5); opacity: 0; }
-        }
-
-        .status-text {
-            color: rgb(31, 41, 55);
-            font-size: 0.875rem;
-            font-weight: 600;
-        }
-
-        /* Countdown */
-        .countdown-section {
-            text-align: center;
-            margin: 1.5rem 0;
-        }
-
-        .countdown-title {
-            font-size: 1.875rem;
-            font-weight: 700;
-            color: white;
-            margin-bottom: 1rem;
-        }
-
-        .countdown {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .countdown-item {
-            position: relative;
-            background: linear-gradient(135deg, white, #f9fafb);
-            padding: 1rem;
-            border-radius: 0.5rem;
-            min-width: 70px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            transition: transform 0.3s;
-        }
-
-        .countdown-item:hover {
-            transform: scale(1.05);
-        }
-
-        .countdown-number {
-            font-size: 1.313rem;
-            font-weight: 800;
-            color: black;
-            line-height: 1;
-        }
-
-        .countdown-label {
-            font-size: 0.875rem;
-            font-weight: 700;
-            color: rgb(100, 116, 139);
-            margin-top: 0.25rem;
-            letter-spacing: 0.05em;
-        }
-
-        .countdown-separator {
-            color: rgb(148, 163, 184);
-            font-size: 1.5rem;
-            font-weight: 300;
-            margin: 0 0.25rem;
-        }
-
-        /* Links Grid */
-        .links-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 0.75rem;
-            margin-top: 1rem;
-        }
-
-        .link-card {
-            position: relative;
-            height: 280px;
-            border-radius: 0.75rem;
-            overflow: hidden;
-            cursor: pointer;
-            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
-            transition: all 0.2s;
-            grid-column: span 2;
-            text-decoration: none;
-        }
-
-        .link-card:hover {
-            transform: scale(1.02);
-            box-shadow: 0 20px 25px rgba(0, 0, 0, 0.15);
-        }
-
-        @keyframes zoom {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.04); }
-        }
-
-        .link-card {
-            animation: zoom 2.2s ease-in-out infinite;
-        }
-
-        .link-card img {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            object-position: center 35%;
-        }
-
-        .link-overlay {
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(to top, rgba(0,0,0,0.8), rgba(0,0,0,0.5), transparent);
-            opacity: 0.8;
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(12px);
             z-index: 1;
         }
 
-        .link-content {
-            position: relative;
-            z-index: 2;
-            height: 100%;
+        /* Sticky Header */
+        .sticky-header {
+            position: fixed;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100%;
+            max-width: 448px;
+            background-color: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+            z-index: 50;
+            border-radius: 0;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+
+        .sticky-header.visible {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .header-content {
             display: flex;
-            flex-direction: column;
-            justify-content: flex-end;
-            padding: 1rem;
-            text-align: center;
+            align-items: center;
+            padding: 12px 16px;
         }
 
-        .link-icon {
-            position: absolute;
-            top: 0.5rem;
-            right: 0.5rem;
-            z-index: 3;
-            width: 35px;
-            height: 35px;
+        .header-image {
+            width: 32px;
+            height: 32px;
             border-radius: 50%;
-            background: white;
-            padding: 0.125rem;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s;
+            margin-right: 12px;
+            object-fit: cover;
         }
 
-        .link-card:hover .link-icon {
-            transform: scale(1.1) rotate(3deg);
+        .header-name {
+            font-size: 18px;
+            font-weight: 600;
+            color: #fff;
         }
 
-        .link-icon img {
+        /* Profile Section */
+        .profile-section {
+            padding-top: 0;
+            background-color: #000;
+            border-radius: 40px;
+            overflow: hidden;
+        }
+
+        .profile-picture-container {
+            position: relative;
+            width: 100%;
+        }
+
+        .profile-picture {
+            width: 100%;
+            height: auto;
+            max-height: 45vh;
+            object-fit: cover;
+            object-position: top;
+            mask-image: linear-gradient(rgb(0, 0, 0) 0%, rgb(0, 0, 0) 80%, rgba(0, 0, 0, 0) 100%);
+            -webkit-mask-image: linear-gradient(rgb(0, 0, 0) 0%, rgb(0, 0, 0) 80%, rgba(0, 0, 0, 0) 100%);
+        }
+
+        .profile-name {
+            padding: 16px 20px;
+            margin-bottom: 24px;
+        }
+
+        .profile-name h1 {
+            font-size: 32px;
+            font-weight: 600;
+            text-align: center;
+            color: #fff;
+            line-height: 1.2;
+        }
+
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 16px;
+        }
+
+        .social-icons a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 18px;
+            height: 18px;
+            text-decoration: none;
+            transition: transform 0.2s ease;
+        }
+
+        .social-icons a:hover {
+            transform: scale(1.1);
+        }
+
+        .social-icons svg {
             width: 100%;
             height: 100%;
-            border-radius: 50%;
-            object-fit: contain;
+            stroke: none;
+            fill: #fff;
+            stroke-width: 0;
+            opacity: 0.9;
+        }
+
+        /* Liens */
+        .links-section {
+            margin: 0 auto;
+            width: 100%;
+            max-width: 460px;
+            padding: 0 1.25rem;
+        }
+
+        .link-item {
+            margin: 20px 0;
+        }
+
+        .link-button {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            max-width: 460px;
+            padding: 8px;
+            margin: 20px 0;
+            border-radius: 36px;
+            background-color: #0de7e4;
+            color: rgb(5, 5, 5);
+            text-decoration: none;
+            text-transform: none;
+            box-shadow: none;
+            cursor: pointer;
+            transition: transform 0.2s;
             position: relative;
         }
 
-        .link-title {
-            font-size: 1.438rem;
+        .link-button:hover {
+            transform: scale(1.02);
+        }
+
+        /* Animation bounce */
+        .bounce-animation {
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        /* Bordure animée */
+        .animated-border {
+            border: none;
+        }
+
+        .animated-border::before,
+        .animated-border::after {
+            content: "";
+            position: absolute;
+            top: -5px;
+            left: -5px;
+            right: -5px;
+            bottom: -5px;
+            border: 2px solid #ffffff;
+            transition: all 0.5s;
+            animation: clippath 3s infinite linear;
+            border-radius: 36px;
+            pointer-events: none;
+        }
+
+        .animated-border::after {
+            animation: clippath 3s infinite -1.5s linear;
+        }
+
+        @keyframes clippath {
+            0%, 100% {
+                clip-path: inset(0 0 98% 0);
+            }
+            25% {
+                clip-path: inset(0 98% 0 0);
+            }
+            50% {
+                clip-path: inset(98% 0 0 0);
+            }
+            75% {
+                clip-path: inset(0 0 0 98%);
+            }
+        }
+
+        /* Animation de clic */
+        @keyframes buttonClick {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(0.95);
+            }
+            100% {
+                transform: scale(1);
+                opacity: 0.5;
+            }
+        }
+
+        .link-button.clicked {
+            animation: buttonClick 0.6s ease forwards;
+        }
+
+        /* Bouton transformé en modal */
+        .link-button.modal-state {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: auto;
+            padding: 25px 20px;
+            height: auto;
+        }
+
+        .modal-icon {
+            font-size: 28px;
+            margin-bottom: 8px;
+            line-height: 1;
+        }
+
+        .modal-title {
+            font-size: 16px;
             font-weight: 700;
-            color: white;
-            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+            color: var(--text-color);
+            margin-bottom: 6px;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
         }
 
-        .link-subtitle {
-            font-size: 0.875rem;
-            color: rgba(255, 255, 255, 0.8);
-            margin-top: 0.25rem;
-            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+        .modal-text {
+            font-size: 12px;
+            color: var(--text-color);
+            margin-bottom: 12px;
+            line-height: 1.3;
+            text-align: center;
+            font-family: 'Segoe UI', 'Helvetica Neue', -apple-system, BlinkMacSystemFont, sans-serif;
+            font-weight: 400;
+            letter-spacing: 0.3px;
         }
 
-        @media (max-width: 768px) {
+        .modal-button-inner {
+            background-color: rgba(0, 0, 0, 0.15);
+            color: var(--text-color);
+            border: 2px solid var(--text-color);
+            padding: 8px 32px;
+            border-radius: 10px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+        }
+
+        .modal-button-inner:hover {
+            background-color: rgba(0, 0, 0, 0.25);
+            transform: scale(1.05);
+        }
+
+        .static-border {
+            border: 2px solid #ffffff;
+        }
+
+        .link-text {
+            font-size: 18px;
+            font-family: 'Poppins', sans-serif;
+            margin: 16px;
+            text-align: center;
+            font-weight: 500;
+        }
+
+        /* Footer */
+        .footer {
+            margin-top: 64px;
+            margin-bottom: 32px;
+            text-align: center;
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 12px;
+        }
+
+        .footer a {
+            color: rgba(255, 255, 255, 1);
+            text-decoration: none;
+            transition: color 0.3s ease;
+            font-weight: 600;
+        }
+
+        .footer a:hover {
+            opacity: 0.8;
+        }
+
+        .footer span {
+            color: rgba(255, 255, 255, 1);
+            font-weight: 600;
+            margin: 0 8px;
+        }
+
+        @media (min-width: 1024px) {
             .container {
-                max-width: 99vw;
-                width: 99vw;
-                margin: 0.5rem auto;
-                padding: 1rem;
+                padding: 0;
             }
 
-            .title {
-                font-size: 2rem;
+            .main-wrapper {
+                margin-top: 40px;
             }
 
-            .countdown-title {
-                font-size: 1.5rem;
+            .profile-section {
+                background-color: #000;
+                border-radius: 40px;
             }
 
-            .cover {
-                width: calc(100% + 2rem);
-                margin: -1rem -1rem 1rem;
+            .profile-picture {
+                max-height: 75vh;
             }
 
-            .cover img {
-                width: 100vw;
+            .sticky-header {
+                border-radius: 0;
             }
-            
-            .link-card {
-                border-radius: 0.5rem;
+
+            .overlay {
+                background-color: rgba(0, 0, 0, 0.5);
+                backdrop-filter: none;
             }
         }
     </style>
 </head>
 <body>
-    <!-- Aurora Background -->
-    <div class="aurora-bg">
-        <div class="aurora-blob blob1"></div>
-        <div class="aurora-blob blob2"></div>
-        <div class="aurora-blob blob3"></div>
-    </div>
+    <!-- Background -->
+    <div class="background"></div>
+    
+    <!-- Overlay -->
+    <div class="overlay"></div>
 
-    <!-- Main Container -->
+    <!-- Main Content -->
     <div class="container">
-        <!-- Cover Section -->
-        <div class="cover">
-            <img src="asset\olivia.jpeg" alt="Cover">
-            <div class="cover-gradient"></div>
-            <div class="cover-content">
-                <h1 class="title">Olivia</h1>
-                <div class="status-badge">
-                    <div class="status-dot"></div>
-                    <span class="status-text">En ligne</span>
+        <div class="main-wrapper">
+            <!-- Sticky Header -->
+            <div class="sticky-header">
+                <div class="header-content">
+                    <img 
+                        src="asset\olivia_of.jpeg"
+                        alt="Pauline"
+                        class="header-image"
+                    />
+                    <div class="header-name">Olivia</div>
                 </div>
             </div>
-        </div>
 
-        <!-- Countdown Section -->
-        <div class="countdown-section">
-            <h3 class="countdown-title">Fermeture de l'accès privé dans... 👇</h3>
-            <div class="countdown">
-                <div class="countdown-item">
-                    <div class="countdown-number" id="hours">07</div>
-                    <div class="countdown-label">Heures</div>
+            <!-- Profile Section -->
+            <div class="profile-section">
+                <!-- Profile Picture -->
+                <div class="profile-picture-container">
+                    <img 
+                        src="asset\olivia.jpeg"
+                        alt="Pauline's profile"
+                        class="profile-picture"
+                    />
                 </div>
-                <div class="countdown-separator">:</div>
-                <div class="countdown-item">
-                    <div class="countdown-number" id="minutes">33</div>
-                    <div class="countdown-label">Minutes</div>
+
+                <!-- Name -->
+                <div class="profile-name">
+                    <h1>Olivia</h1>
+                    <div class="social-icons">
+                        <a href="https://www.instagram.com/oliviasvkx" target="_blank" rel="nofollow noopener noreferrer" title="Instagram">
+                            <svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 448 512" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z"></path>
+                            </svg>
+                        </a>
+                    </div>
                 </div>
-                <div class="countdown-separator">:</div>
-                <div class="countdown-item">
-                    <div class="countdown-number" id="seconds">23</div>
-                    <div class="countdown-label">Secondes</div>
+
+                <!-- Liens -->
+                <div class="links-section">
+                    <!-- Lien 1 avec animation -->
+                    <div class="link-item">
+                        <a href="https://onlyfans.com/oliviaslovakia" target="_blank" rel="nofollow noopener noreferrer" class="link-button animated-border bounce-animation">
+                            <div class="link-text">
+                                <span>Free Exclusive Content ❤️</span>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Footer -->
+                <div class="footer">
+                    <a href="https://onlylinks.com/terms">Terms</a>
+                    <span>|</span>
+                    <a href="https://onlylinks.com/privacy">Privacy Policy</a>
                 </div>
             </div>
-        </div>
-
-        <!-- Links Grid -->
-        <div class="links-grid">
-            <!-- OnlyFans Card -->
-            <a href="https://onlyfans.com/oliviaslovakia" target="_blank" class="link-card">
-                <img src="asset\olivia_of.jpeg" alt="Mon OnlyFans">
-                <div class="link-overlay"></div>
-                <div class="link-content">
-                    <h3 class="link-title">Mon OnlyFans 💙</h3>
-                    <p class="link-subtitle">Découvre-moi et discutons ensemble ! 😘</p>
-                </div>
-                <div class="link-icon">
-                    <img src="https://ucarecdn.com/6b0bc347-a082-451a-9c45-9a6adab8d8d2/onlyfans-1.webp" alt="OnlyFans Icon">
-                </div>
-            </a>
         </div>
     </div>
+</body>
+</html>
+<script>
+    const stickyHeader = document.querySelector('.sticky-header');
+    const profilePicture = document.querySelector('.profile-picture');
 
-    <script>
-        // Countdown Timer
-        const targetTime = new Date().getTime() + (7 * 60 * 60 * 1000) + (33 * 60 * 1000) + (23 * 1000);
+    // Observer pour détecter quand 20% de la photo n'est plus visible
+    if (profilePicture) {
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    // Plus de 20% de la photo est visible
+                    stickyHeader.classList.remove('visible');
+                } else {
+                    // Moins de 20% de la photo est visible (elle a disparu)
+                    stickyHeader.classList.add('visible');
+                }
+            });
+        }, {
+            threshold: 0.005
+        });
 
-        function updateCountdown() {
-            const now = new Date().getTime();
-            const distance = targetTime - now;
+        observer.observe(profilePicture);
+    }
 
-            if (distance < 0) {
-                document.getElementById('hours').textContent = '00';
-                document.getElementById('minutes').textContent = '00';
-                document.getElementById('seconds').textContent = '00';
+    // Transformation du bouton au clic
+    document.querySelectorAll('.link-button').forEach(button => {
+        button.addEventListener('click', (e) => {
+            e.preventDefault();
+            
+            // Vérifier si le bouton est déjà en mode modal
+            if (button.classList.contains('modal-state')) {
+                // C'est un clic sur "Continue"
+                const href = button.getAttribute('data-href');
+                window.open(href, '_blank');
                 return;
             }
 
-            const hours = Math.floor(distance / (1000 * 60 * 60));
-            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-            document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
-            document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
-            document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
-        }
-
-        updateCountdown();
-        setInterval(updateCountdown, 1000);
-    </script>
-</body>
-</html>
-
-
-
-
-
-
-
+            // Stocker l'URL et transformer le bouton
+            const href = button.getAttribute('href');
+            button.setAttribute('data-href', href);
+            
+            // Sauvegarder le texte original
+            const originalHTML = button.innerHTML;
+            button.setAttribute('data-original', originalHTML);
+            
+            // Transformer le bouton en modal
+            button.classList.add('modal-state');
+            button.innerHTML = `
+                <div class="modal-icon">🔞</div>
+                <div class="modal-title">Sensitive Content</div>
+                <div class="modal-text">This link may contain sensitive content.<br>Are you over 18 years old?</div>
+                <button class="modal-button-inner">Continue</button>
+            `;
+        });
+    });
+</script>
